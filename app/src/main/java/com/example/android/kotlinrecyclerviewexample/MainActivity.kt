@@ -74,7 +74,7 @@ class MainActivity : AppCompatActivity(), ExampleAdapter.OnItemClickListener{
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item?.itemId) {
-            R.id.groupie_recyclerview -> {
+            R.id.groupie_recyclerview_menu_item -> {
                 val intent = Intent(this, GroupieRecyclerView::class.java)
                 startActivity(intent)
 

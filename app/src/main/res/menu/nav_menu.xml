@@ -4,7 +4,7 @@
 
 
     <item
-        android:id="@+id/groupie_recyclerview"
+        android:id="@+id/groupie_recyclerview_menu_item"
         android:title="Groupie"
         app:showAsAction="ifRoom" />
 
