@@ -1,5 +1,6 @@
-package com.example.android.kotlinrecyclerviewexample
+package com.example.android.kotlinrecyclerviewexample.groupie
 
+import com.example.android.kotlinrecyclerviewexample.R
 import com.xwray.groupie.ExpandableGroup
 import com.xwray.groupie.ExpandableItem
 import com.xwray.groupie.kotlinandroidextensions.GroupieViewHolder
@@ -20,7 +21,8 @@ class ExpandableHeaderItem(private val title: String) : Item(), ExpandableItem {
         }
     }
 
-    override fun getLayout() = R.layout.item_expandable_header
+    override fun getLayout() =
+        R.layout.item_expandable_header
 
     override fun setExpandableGroup(onToggleListener: ExpandableGroup) {
         expandableGroup = onToggleListener

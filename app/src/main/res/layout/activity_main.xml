@@ -17,25 +17,25 @@
 
     <LinearLayout
         android:id="@+id/button_layout"
-        android:padding="4dp"
-        android:clipToPadding="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true">
+        android:layout_alignParentBottom="true"
+        android:clipToPadding="true"
+        android:padding="4dp">
 
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Insert item"
-            android:onClick="insertItem"/>
+            android:onClick="insertItem"
+            android:text="Insert item" />
 
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Delete item"
-            android:onClick="deleteItem"/>
+            android:onClick="deleteItem"
+            android:text="Delete item" />
     </LinearLayout>
 
 

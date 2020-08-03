@@ -8,10 +8,11 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.android.kotlinrecyclerviewexample.groupie.GroupieRecyclerViewActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlin.random.Random
 
-class MainActivity : AppCompatActivity(), ExampleAdapter.OnItemClickListener{
+class MainActivity : AppCompatActivity(), ExampleAdapter.OnItemClickListener {
 
     private val exampleList = generateDummyList(500)
     private val adapter = ExampleAdapter(exampleList, this)
@@ -49,7 +50,7 @@ class MainActivity : AppCompatActivity(), ExampleAdapter.OnItemClickListener{
     }
 
     override fun onItemClick(position: Int) {
-        Toast.makeText(this,"Item $position clicked", Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, "Item $position clicked", Toast.LENGTH_SHORT).show()
         val clickedItem: ExampleItem = exampleList[position]
         clickedItem.text1 = "clicked"
         adapter.notifyItemChanged(position)
