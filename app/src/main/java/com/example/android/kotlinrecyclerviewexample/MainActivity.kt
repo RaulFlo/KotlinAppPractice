@@ -1,7 +1,10 @@
 package com.example.android.kotlinrecyclerviewexample
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -66,5 +69,25 @@ class MainActivity : AppCompatActivity(), ExampleAdapter.OnItemClickListener{
             list += item
         }
         return list
+    }
+
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item?.itemId) {
+            R.id.groupie_recyclerview -> {
+                val intent = Intent(this, GroupieRecyclerView::class.java)
+                startActivity(intent)
+
+            }
+
+
+        }
+
+        return super.onOptionsItemSelected(item)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.nav_menu, menu)
+        return super.onCreateOptionsMenu(menu)
     }
 }
