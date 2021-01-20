@@ -1,14 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <item android:id="@+id/nav_share"
+    <item
+        android:id="@+id/nav_share"
         android:icon="@drawable/ic_baseline_share_24"
-        android:title="Share this Image"/>
-    <item android:id="@+id/nav_message"
+        android:title="Share this Image"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/nav_message"
         android:icon="@drawable/ic_baseline_message_24"
-        android:title="Send as Message"/>
-    <item android:id="@+id/nav_flag"
+        android:title="Send as Message"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/nav_flag"
         android:icon="@drawable/ic_baseline_flag_24"
-        android:title="Report this Image"/>
+        android:title="Report this Image"
+        app:showAsAction="always" />
+
 
 </menu>

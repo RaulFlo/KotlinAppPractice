@@ -15,5 +15,9 @@
 
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
+
+        <item name="popupMenuStyle">@style/MyPopupMenu</item>
     </style>
+
+
 </resources>

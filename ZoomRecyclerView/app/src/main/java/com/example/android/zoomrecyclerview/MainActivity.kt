@@ -2,11 +2,15 @@ package com.example.android.zoomrecyclerview
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.PopupMenu
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.LinearSnapHelper
 import androidx.recyclerview.widget.RecyclerView
+import kotlinx.android.synthetic.main.rv_item.*
 import www.sanju.zoomrecyclerlayout.ZoomRecyclerLayout
+import java.lang.Exception
 
 class MainActivity : AppCompatActivity() {
 
@@ -35,6 +39,7 @@ class MainActivity : AppCompatActivity() {
 
 
     }
+
 
     private fun addToList(title: String,image: Int, rating:Int){
         titleList.add(title)
