@@ -1,9 +1,9 @@
 package com.example.android.zoomrecyclerview
 
+import android.app.ActionBar
 import android.os.Build
 import android.view.Gravity
 import android.view.Gravity.CENTER
-import android.view.Gravity.CENTER_HORIZONTAL
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,7 +11,7 @@ import android.widget.*
 import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.rv_item.*
-import java.lang.Exception
+
 
 class RecyclerAdapter(
         private var image: List<Int>,
@@ -29,22 +29,23 @@ class RecyclerAdapter(
 
         init {
             itemView.setOnClickListener() { v: View ->
-                val popupMenu = PopupMenu(itemView.context,itemView, CENTER_HORIZONTAL)
+                val popupMenu = PopupMenu(itemView.context, itemView)
                 popupMenu.inflate(R.menu.popup_menu)
-                //popupMenu.gravity = Gravity.CENTER_VERTICAL
+
+
 
                 popupMenu.setOnMenuItemClickListener{
                     when (it.itemId){
                         R.id.nav_share -> {
-                            Toast.makeText(itemView.context,"sharePressed",Toast.LENGTH_SHORT).show()
+                            Toast.makeText(itemView.context, "sharePressed", Toast.LENGTH_SHORT).show()
                             true
                         }
-                        R.id.nav_message ->{
-                            Toast.makeText(itemView.context,"MessagePressed",Toast.LENGTH_SHORT).show()
+                        R.id.nav_message -> {
+                            Toast.makeText(itemView.context, "MessagePressed", Toast.LENGTH_SHORT).show()
                             true
                         }
-                        R.id.nav_flag ->{
-                            Toast.makeText(itemView.context,"flagPressed",Toast.LENGTH_SHORT).show()
+                        R.id.nav_flag -> {
+                            Toast.makeText(itemView.context, "flagPressed", Toast.LENGTH_SHORT).show()
                             true
                         }
                         else -> true
@@ -56,10 +57,10 @@ class RecyclerAdapter(
                     popup.isAccessible = true
                     val menu = popup.get(popupMenu)
                     menu.javaClass
-                            .getDeclaredMethod("setForceShowIcon",Boolean::class.java)
-                            .invoke(menu,true)
+                            .getDeclaredMethod("setForceShowIcon", Boolean::class.java)
+                            .invoke(menu, true)
 
-                }catch (e:Exception){
+                }catch (e: Exception){
                     e.printStackTrace()
 
                 }finally {
@@ -69,6 +70,8 @@ class RecyclerAdapter(
 
 
             }
+
+
 
 
         }
