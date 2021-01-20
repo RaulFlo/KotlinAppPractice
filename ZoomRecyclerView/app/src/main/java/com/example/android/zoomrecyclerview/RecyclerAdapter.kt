@@ -11,6 +11,7 @@ import android.widget.*
 import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.rv_item.*
+import kotlinx.android.synthetic.main.rv_item.view.*
 
 
 class RecyclerAdapter(
@@ -29,7 +30,10 @@ class RecyclerAdapter(
 
         init {
             itemView.setOnClickListener() { v: View ->
-                val popupMenu = PopupMenu(itemView.context, itemView)
+                val position: Int = adapterPosition
+
+                //using the R.id.tv_destination to anchor position of the popup
+                val popupMenu = PopupMenu(itemView.context,itemView.findViewById(R.id.tv_destination),Gravity.CENTER_VERTICAL)
                 popupMenu.inflate(R.menu.popup_menu)
 
 
@@ -52,20 +56,25 @@ class RecyclerAdapter(
                     }
                 }
 
-                try {
-                    val popup = PopupMenu::class.java.getDeclaredField("mPopup")
-                    popup.isAccessible = true
-                    val menu = popup.get(popupMenu)
-                    menu.javaClass
-                            .getDeclaredMethod("setForceShowIcon", Boolean::class.java)
-                            .invoke(menu, true)
 
-                }catch (e: Exception){
-                    e.printStackTrace()
+                itemView.setOnLongClickListener {
+                    try {
+                        val popup = PopupMenu::class.java.getDeclaredField("mPopup")
+                        popup.isAccessible = true
+                        val menu = popup.get(popupMenu)
+                        menu.javaClass
+                                .getDeclaredMethod("setForceShowIcon", Boolean::class.java)
+                                .invoke(menu, true)
 
-                }finally {
-                    popupMenu.show()
+                    }catch (e: Exception){
+                        e.printStackTrace()
+
+                    }finally {
+                        popupMenu.show()
+                    }
+                    true
                 }
+
 
 
 
@@ -98,6 +107,8 @@ class RecyclerAdapter(
 
 
 }
+
+
 
 
 
