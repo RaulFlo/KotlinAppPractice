@@ -2,6 +2,7 @@ package com.example.android.biometric
 
 import android.app.KeyguardManager
 import android.content.Context
+import android.content.DialogInterface
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.hardware.biometrics.BiometricPrompt
@@ -12,6 +13,7 @@ import android.os.CancellationSignal
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.core.app.ActivityCompat
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -33,13 +35,35 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+    @RequiresApi(Build.VERSION_CODES.P)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         checkBiometricSupport()
 
+        btn_authenticate.setOnClickListener {
+            val biometricPrompt: BiometricPrompt = BiometricPrompt.Builder(this)
+                .setTitle("Title of Prompt")
+                .setSubtitle("Authentication is required")
+                .setDescription("this app uses fingerprint protection to keep data secure")
+                .setNegativeButton("Cancel", this.mainExecutor,DialogInterface.OnClickListener { dialog, which ->
+                    notifyUser("Authentication cancel")
+                }).build()
+
+            biometricPrompt.authenticate(getCancellationSignal(),mainExecutor,authenticationCallback)
+        }
+
     }
+
+    private fun getCancellationSignal(): CancellationSignal{
+        cancellationSignal = CancellationSignal()
+        cancellationSignal?.setOnCancelListener {
+            notifyUser("Authentication was cancelled by the user")
+        }
+        return cancellationSignal as CancellationSignal
+    }
+
 
     private fun checkBiometricSupport(): Boolean{
         val keyguardManager = getSystemService(Context.KEYGUARD_SERVICE) as KeyguardManager
